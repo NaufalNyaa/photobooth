@@ -19,7 +19,7 @@ code {
 }
 
 /* ============================================ */
-/* ANIMATED BACKGROUND - Interactive Gradient */
+/* ANIMASI BACKGROUND - Interactive Gradient */
 /* ============================================ */
 
 #animated-background {
@@ -79,7 +79,7 @@ code {
     }
 }
 
-/* Camera icon floating elements */
+/* ikon kamera floating */
 #animated-background::after {
     content: '📷 ✨ 💖 🎨 ⭐ 🌸';
     position: absolute;
@@ -109,7 +109,7 @@ code {
     }
 }
 
-/* Ensure main content is above background */
+/* Memastikan konten utama berada di atas latar belakang */
 #root {
     position: relative;
     z-index: 1;
@@ -217,7 +217,7 @@ code {
 }
 
 /* ============================================ */
-/* CUSTOM SCROLLBAR */
+/* scrollbar custom
 /* ============================================ */
 
 ::-webkit-scrollbar {
@@ -241,7 +241,7 @@ code {
 }
 
 /* ============================================ */
-/* GLASS MORPHISM EFFECTS FOR CARDS */
+/* efek glass pada kartu
 /* ============================================ */
 
 .glass-card {
@@ -253,7 +253,7 @@ code {
 }
 
 /* ============================================ */
-/* SMOOTH TRANSITIONS */
+/* Transisi
 /* ============================================ */
 
 * {
@@ -265,7 +265,7 @@ button, a, input, select, textarea {
 }
 
 /* ============================================ */
-/* HOVER EFFECTS */
+/* efek Hover
 /* ============================================ */
 
 button:hover:not(:disabled) {
@@ -278,7 +278,7 @@ button:active:not(:disabled) {
 }
 
 /* ============================================ */
-/* ANIMATION UTILITIES */
+/* Kebutuhan Animasi
 /* ============================================ */
 
 @keyframes fadeIn {
@@ -310,7 +310,7 @@ button:active:not(:disabled) {
 }
 
 /* ============================================ */
-/* RESPONSIVE ADJUSTMENTS */
+/* Kode responsive
 /* ============================================ */
 
 @media (max-width: 768px) {

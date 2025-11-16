@@ -1,45 +1,45 @@
 #====================================================================================================
-# START - Testing Protocol - DO NOT EDIT OR REMOVE THIS SECTION
+# MULAI - Protokol Pengujian - JANGAN EDIT ATAU HAPUS BAGIAN INI = AUTH ( NAUFALNYAA )
 #====================================================================================================
 
-# THIS SECTION CONTAINS CRITICAL TESTING INSTRUCTIONS FOR BOTH AGENTS
-# BOTH MAIN_AGENT AND TESTING_AGENT MUST PRESERVE THIS ENTIRE BLOCK
+# BAGIAN INI BERISI INSTRUKSI PENGUJIAN KRITIS UNTUK KEDUA AGEN
+# BAIK MAIN_AGENT MAUPUN TESTING_AGENT HARUS MEMPERTAHANKAN BLOK INI SEPENUHNYA
 
-# Communication Protocol:
-# If the `testing_agent` is available, main agent should delegate all testing tasks to it.
+# Protokol Komunikasi:
+# Jika `testing_agent` tersedia, main agent harus menyerahkan semua tugas pengujian kepadanya.
 #
-# You have access to a file called `test_result.md`. This file contains the complete testing state
-# and history, and is the primary means of communication between main and the testing agent.
+# Anda memiliki akses ke file bernama `test_result.md`. File ini berisi seluruh status dan riwayat
+# pengujian, dan merupakan media komunikasi utama antara main agent dan testing agent.
 #
-# Main and testing agents must follow this exact format to maintain testing data.
-# The testing data must be entered in yaml format Below is the data structure:
+# Main agent dan testing agent **harus** mengikuti format ini untuk menjaga data pengujian.
+# Data pengujian harus ditulis dalam format YAML sesuai struktur berikut:
 #
-## user_problem_statement: {problem_statement}
+## user_problem_statement: {penjelasan_masalah_user}
 ## backend:
-##   - task: "Task name"
+##   - task: "Nama Task"
 ##     implemented: true
-##     working: true  # or false or "NA"
-##     file: "file_path.py"
+##     working: true  # atau false atau "NA"
+##     file: "path_file.py"
 ##     stuck_count: 0
-##     priority: "high"  # or "medium" or "low"
+##     priority: "high"  # atau "medium" atau "low"
 ##     needs_retesting: false
 ##     status_history:
-##         -working: true  # or false or "NA"
-##         -agent: "main"  # or "testing" or "user"
-##         -comment: "Detailed comment about status"
+##         -working: true  # atau false atau "NA"
+##         -agent: "main"  # atau "testing" atau "user"
+##         -comment: "Komentar detail mengenai status"
 ##
 ## frontend:
-##   - task: "Task name"
+##   - task: "Nama Task"
 ##     implemented: true
-##     working: true  # or false or "NA"
-##     file: "file_path.js"
+##     working: true  # atau false atau "NA"
+##     file: "path_file.js"
 ##     stuck_count: 0
-##     priority: "high"  # or "medium" or "low"
+##     priority: "high"  # atau "medium" atau "low"
 ##     needs_retesting: false
 ##     status_history:
-##         -working: true  # or false or "NA"
-##         -agent: "main"  # or "testing" or "user"
-##         -comment: "Detailed comment about status"
+##         -working: true  # atau false atau "NA"
+##         -agent: "main"  # atau "testing" atau "user"
+##         -comment: "Komentar detail mengenai status"
 ##
 ## metadata:
 ##   created_by: "main_agent"
@@ -49,55 +49,60 @@
 ##
 ## test_plan:
 ##   current_focus:
-##     - "Task name 1"
-##     - "Task name 2"
+##     - "Nama Task 1"
+##     - "Nama Task 2"
 ##   stuck_tasks:
-##     - "Task name with persistent issues"
+##     - "Task yang mengalami masalah berulang"
 ##   test_all: false
-##   test_priority: "high_first"  # or "sequential" or "stuck_first"
+##   test_priority: "high_first"  # atau "sequential" atau "stuck_first"
 ##
 ## agent_communication:
-##     -agent: "main"  # or "testing" or "user"
-##     -message: "Communication message between agents"
+##     -agent: "main"  # atau "testing" atau "user"
+##     -message: "Pesan komunikasi antar agen"
 
-# Protocol Guidelines for Main agent
+# Panduan untuk Main Agent
 #
-# 1. Update Test Result File Before Testing:
-#    - Main agent must always update the `test_result.md` file before calling the testing agent
-#    - Add implementation details to the status_history
-#    - Set `needs_retesting` to true for tasks that need testing
-#    - Update the `test_plan` section to guide testing priorities
-#    - Add a message to `agent_communication` explaining what you've done
+# 1. Update File Test Sebelum Pengujian:
+#    - Main agent wajib mengupdate file `test_result.md` sebelum memanggil testing agent
+#    - Tambahkan detail implementasi ke status_history
+#    - Set `needs_retesting` menjadi true pada task yang perlu diuji ulang
+#    - Update bagian `test_plan` untuk mengatur prioritas pengujian
+#    - Tambahkan pesan ke agent_communication untuk menjelaskan apa yang telah dilakukan
 #
-# 2. Incorporate User Feedback:
-#    - When a user provides feedback that something is or isn't working, add this information to the relevant task's status_history
-#    - Update the working status based on user feedback
-#    - If a user reports an issue with a task that was marked as working, increment the stuck_count
-#    - Whenever user reports issue in the app, if we have testing agent and task_result.md file so find the appropriate task for that and append in status_history of that task to contain the user concern and problem as well
+# 2. Menggabungkan Feedback User:
+#    - Jika user memberikan feedback bahwa suatu fitur berfungsi atau tidak berfungsi,
+#      tambahkan informasi itu ke status_history task terkait
+#    - Update status working berdasarkan laporan user
+#    - Bila user melaporkan error pada task yang sebelumnya dianggap berfungsi,
+#      increment nilai stuck_count
+#    - Setiap kali user melaporkan bug, dan test_result.md tersedia,
+#      temukan task terkait dan tambahkan catatan masalah user ke status_history
 #
-# 3. Track Stuck Tasks:
-#    - Monitor which tasks have high stuck_count values or where you are fixing same issue again and again, analyze that when you read task_result.md
-#    - For persistent issues, use websearch tool to find solutions
-#    - Pay special attention to tasks in the stuck_tasks list
-#    - When you fix an issue with a stuck task, don't reset the stuck_count until the testing agent confirms it's working
+# 3. Melacak Task yang Bermasalah:
+#    - Pantau task dengan stuck_count tinggi atau task yang masalahnya berulang
+#    - Untuk masalah yang terus berulang, main agent boleh menggunakan websearch untuk mencari solusi
+#    - Beri perhatian khusus pada task di daftar stuck_tasks
+#    - Jika Anda memperbaiki issue task yang termasuk stuck_tasks,
+#      jangan reset stuck_count sampai testing agent mengonfirmasi task tersebut sudah berfungsi
 #
-# 4. Provide Context to Testing Agent:
-#    - When calling the testing agent, provide clear instructions about:
-#      - Which tasks need testing (reference the test_plan)
-#      - Any authentication details or configuration needed
-#      - Specific test scenarios to focus on
-#      - Any known issues or edge cases to verify
+# 4. Beri Konteks ke Testing Agent:
+#    - Saat memanggil testing agent, sertakan instruksi jelas mengenai:
+#      - Task apa yang harus diuji (mengacu pada test_plan)
+#      - Detail konfigurasi atau autentikasi bila diperlukan
+#      - Skenario testing yang harus difokuskan
+#      - Bug yang sudah diketahui atau edge-case
 #
-# 5. Call the testing agent with specific instructions referring to test_result.md
+# 5. Selalu panggil testing agent dengan instruksi spesifik berdasarkan test_result.md
 #
-# IMPORTANT: Main agent must ALWAYS update test_result.md BEFORE calling the testing agent, as it relies on this file to understand what to test next.
+# PENTING: Main agent **HARUS** selalu update test_result.md **SEBELUM** memanggil testing agent,
+# karena testing agent bergantung pada file tersebut untuk memahami apa yang harus diuji.
+#
+#====================================================================================================
+# SELESAI - Protokol Pengujian - JANGAN EDIT ATAU HAPUS BAGIAN INI
+#====================================================================================================
+
+
 
 #====================================================================================================
-# END - Testing Protocol - DO NOT EDIT OR REMOVE THIS SECTION
-#====================================================================================================
-
-
-
-#====================================================================================================
-# Testing Data - Main Agent and testing sub agent both should log testing data below this section
+# Data Pengujian - Main Agent dan Testing Agent harus mencatat data pengujian di bawah bagian ini
 #====================================================================================================
