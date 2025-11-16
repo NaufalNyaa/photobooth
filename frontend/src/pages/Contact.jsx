@@ -63,7 +63,7 @@ const Contact = () => {
               <Mail className="text-pink-600" size={24} />
             </div>
             <h3 className="font-semibold text-gray-900 mb-2">Email</h3>
-            <p className="text-sm text-gray-600">support@picapicabooth.com</p>
+            <p className="text-sm text-gray-600">support@FunSnapbooth.com</p>
           </Card>
 
           <Card className="p-6 text-center hover:shadow-lg transition-shadow">

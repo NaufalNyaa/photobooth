@@ -26,7 +26,7 @@ const PrivacyPolicy = () => {
             <section className="mb-8">
               <h2 className="text-2xl font-semibold text-gray-900 mb-4">1. Informasi yang Kami Kumpulkan</h2>
               <p className="text-gray-700 mb-4">
-                Picapica Photo Booth berkomitmen untuk melindungi privasi Anda. Kami hanya mengakses kamera perangkat Anda
+                FunSnap Photo Booth berkomitmen untuk melindungi privasi Anda. Kami hanya mengakses kamera perangkat Anda
                 untuk membuat photo strips. Semua foto diproses secara lokal di browser Anda.
               </p>
             </section>

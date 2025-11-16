@@ -25,7 +25,7 @@ const FAQ = () => {
         </Button>
 
         <h1 className="text-4xl font-bold text-gray-900 mb-3">Frequently Asked Questions</h1>
-        <p className="text-gray-600 mb-8">Temukan jawaban untuk pertanyaan umum tentang Picapica Photo Booth</p>
+        <p className="text-gray-600 mb-8">Temukan jawaban untuk pertanyaan umum tentang FunSnap Booth</p>
 
         <Accordion type="single" collapsible className="w-full">
           {mockFAQs.map((faq, index) => (

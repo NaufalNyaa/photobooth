@@ -22,7 +22,7 @@ const Navbar = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2 font-bold text-xl text-gray-900 hover:text-pink-600 transition-colors">
             <Camera size={28} className="text-pink-500" />
-            Picapica
+            FunSnap
           </Link>
 
           {/* Navigation Links */}
@@ -46,7 +46,7 @@ const Navbar = () => {
               className="bg-blue-900 hover:bg-blue-800 text-white px-6"
               onClick={() => window.open('https://www.paypal.com', '_blank')}
             >
-              PayPal
+              Support
             </Button>
           </div>
 

@@ -18,14 +18,64 @@ export const mockFrames = [
   { id: 'black', name: 'Black', color: '#2C2C2C', borderColor: '#000000' },
 ];
 
-export const mockStickers = [
+// STICKER TEMPLATES - Layout Specific
+// Template sticker yang sudah di-design dengan ukuran sesuai layout
+export const mockStickerTemplates = {
+  2: [ // Layout 2 photos
+    {
+      id: 'meow_2',
+      name: 'Meow',
+      preview: '/stickers/meow_2.png', // Preview thumbnail
+      overlayPath: '/stickers/meow_2.png', // Full overlay image
+      description: 'Cute cat template for 2 photos'
+    },
+    {
+      id: 'doll_2',
+      name: 'Doll',
+      preview: '/stickers/doll_2.png',
+      overlayPath: '/stickers/doll_2.png',
+      description: 'Cute doll template for 2 photos'
+    }
+  ],
+  3: [ // Layout 3 photos
+    {
+      id: 'meow_3',
+      name: 'Meow',
+      preview: '/stickers/meow_3.png',
+      overlayPath: '/stickers/meow_3.png',
+      description: 'Cute cat template for 3 photos'
+    },
+    {
+      id: 'doll_3',
+      name: 'Doll',
+      preview: '/stickers/doll_3.png',
+      overlayPath: '/stickers/doll_3.png',
+      description: 'Cute doll template for 3 photos'
+    }
+  ],
+  // Nanti bisa ditambahkan untuk layout 4 dan 6
+  // 4: [...],
+  // 6: [...]
+};
+
+// EMOJI STICKERS - Universal (bisa digunakan di semua layout)
+export const mockEmojiStickers = [
   { id: 'heart', icon: '❤️', name: 'Heart' },
   { id: 'star', icon: '⭐', name: 'Star' },
   { id: 'smile', icon: '😊', name: 'Smile' },
   { id: 'cool', icon: '😎', name: 'Cool' },
   { id: 'party', icon: '🎉', name: 'Party' },
   { id: 'camera', icon: '📷', name: 'Camera' },
+  { id: 'sparkles', icon: '✨', name: 'Sparkles' },
+  { id: 'rainbow', icon: '🌈', name: 'Rainbow' },
+  { id: 'flower', icon: '🌸', name: 'Flower' },
+  { id: 'butterfly', icon: '🦋', name: 'Butterfly' },
+  { id: 'crown', icon: '👑', name: 'Crown' },
+  { id: 'kiss', icon: '💋', name: 'Kiss' },
 ];
+
+// Keep old mockStickers for backward compatibility
+export const mockStickers = mockEmojiStickers;
 
 export const mockGalleryPhotos = [
   {
@@ -85,7 +135,7 @@ export const mockFAQs = [
   },
   {
     question: 'Bagaimana cara menggunakannya?',
-    answer: 'Sangat mudah! Klik tombol START, izinkan akses kamera, lalu ambil 4 foto berturut-turut dengan countdown timer. Setelah itu, tambahkan filter dan frame sesuai keinginan Anda.'
+    answer: 'Sangat mudah! Klik tombol START, izinkan akses kamera, lalu ambil foto sesuai layout yang dipilih. Setelah itu, tambahkan template sticker atau emoji sesuai keinginan Anda.'
   },
   {
     question: 'Apakah gratis?',

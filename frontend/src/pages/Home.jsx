@@ -11,12 +11,12 @@ const Home = () => {
       {/* Hero Section */}
       <div className="flex-1 flex flex-col items-center justify-center px-4 py-20">
         <h1 className="text-5xl md:text-6xl font-bold text-gray-900 text-center mb-6">
-          Picapica - Free Online Photo Booth
+          FunSnap - Free Online Photo Booth
         </h1>
 
         <div className="flex items-center gap-3 mb-8">
           <p className="text-lg md:text-xl text-gray-700 text-center max-w-2xl">
-            Welcome to Agnes' Picapica, your personal photo booth at home. Create photo strips with fun filters and frames.
+            Welcome to Manggaly' FunSnap, your personal photo booth at home. Create photo strips with fun filters and frames.
           </p>
           <span className="inline-flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap">
             <Camera size={16} />
@@ -76,13 +76,13 @@ const Home = () => {
       {/* Footer */}
       <footer className="py-8 text-center">
         <p className="text-sm text-gray-700 font-medium mb-1">
-          Picapica Booth - The original online photo strip creator
+          FunSnap Booth - The original online photo strip creator
         </p>
         <p className="text-xs text-gray-600">
           made by
         </p>
         <p className="text-xs text-gray-500 mt-2">
-          © {new Date().getFullYear()} Agnes Wei. All Rights Reserved.
+          © {new Date().getFullYear()} Putri Dwi Manggaly. All Rights Reserved.
         </p>
       </footer>
     </div>
