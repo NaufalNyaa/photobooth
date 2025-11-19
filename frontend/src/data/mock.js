@@ -130,8 +130,8 @@ export const mockGalleryPhotos = [
 
 export const mockFAQs = [
   {
-    question: 'Apa itu Picapica Photo Booth?',
-    answer: 'Picapica adalah photo booth online gratis yang memungkinkan Anda membuat photo strips vintage dengan filter dan frame yang dapat disesuaikan. Tidak perlu download aplikasi atau registrasi!'
+    question: 'Apa itu FunSnap Photo Booth?',
+    answer: 'FunSnap adalah photo booth online gratis yang memungkinkan Anda membuat photo strips vintage dengan filter dan frame yang dapat disesuaikan. Tidak perlu download aplikasi atau registrasi!'
   },
   {
     question: 'Bagaimana cara menggunakannya?',
@@ -139,7 +139,7 @@ export const mockFAQs = [
   },
   {
     question: 'Apakah gratis?',
-    answer: 'Ya, Picapica 100% gratis untuk digunakan. Tidak ada biaya tersembunyi atau langganan.'
+    answer: 'Ya, FunSnap 100% gratis untuk digunakan. Tidak ada biaya tersembunyi atau langganan.'
   },
   {
     question: 'Bisakah saya menyimpan foto saya?',
@@ -147,6 +147,6 @@ export const mockFAQs = [
   },
   {
     question: 'Apakah berfungsi di perangkat mobile?',
-    answer: 'Absolutely! Picapica berfungsi sempurna di smartphone, tablet, dan komputer. Cukup buka browser Anda dan mulai membuat photo strips.'
+    answer: 'Absolutely! FunSnap berfungsi sempurna di smartphone, tablet, dan komputer. Cukup buka browser Anda dan mulai membuat photo strips.'
   }
 ];

@@ -209,8 +209,8 @@ const PhotoBooth = () => {
       const ctx = canvas.getContext('2d');
       const frameData = mockFrames.find(f => f.id === selectedFrame);
 
-      const photoHeight = 360;
-      const photoWidth = 320;
+      const photoHeight = 300;
+      const photoWidth = 400;
       const padding = 40;
       const borderWidth = 8;
 
@@ -313,14 +313,14 @@ const PhotoBooth = () => {
     ctx.fillStyle = '#000';
     ctx.font = 'bold 18px Arial';
     ctx.textAlign = 'center';
-    ctx.fillText(`Picapica Booth - ${new Date().toLocaleDateString()}`, canvas.width / 2, canvas.height - 25);
+    ctx.fillText(`FunSnap Booth - ${new Date().toLocaleDateString()}`, canvas.width / 2, canvas.height - 25);
   };
 
   const downloadPhotoStrip = async () => {
     const dataUrl = await generatePhotoStrip();
 
     const link = document.createElement('a');
-    link.download = `picapica-${Date.now()}.png`;
+    link.download = `FunSnap-${Date.now()}.png`;
     link.href = dataUrl;
     link.click();
 
@@ -712,7 +712,7 @@ const PhotoBooth = () => {
                   onMouseLeave={handleMouseUp}
                 >
                   {photos.map((photo, index) => (
-                    <div key={index} className="w-full h-24 rounded overflow-hidden">
+                    <div key={index} className="w-full h-48 rounded overflow-hidden">
                       <img
                         src={photo}
                         alt={`Photo ${index + 1}`}

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ArrowLeft, Download, Trash2, Search, RefreshCw, Image as ImageIcon } from 'lucide-react';
+import { ArrowLeft, Download, Trash2, Search, RefreshCw, Image as ImageIcon, Eye } from 'lucide-react';
 import { Button } from '../components/ui/button';
 import { Card } from '../components/ui/card';
 import { Input } from '../components/ui/input';
@@ -33,6 +33,7 @@ const Gallery = () => {
   const [selectedPhoto, setSelectedPhoto] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [deleteConfirmId, setDeleteConfirmId] = useState(null);
+  const [deleteConfirmPhoto, setDeleteConfirmPhoto] = useState(null);
 
   // Fetch photos from backend
   useEffect(() => {
@@ -77,6 +78,7 @@ const Gallery = () => {
       setPhotos(photos.filter(photo => photo.id !== id));
       setSelectedPhoto(null);
       setDeleteConfirmId(null);
+      setDeleteConfirmPhoto(null);
 
       toast({
         title: 'Berhasil!',
@@ -127,6 +129,19 @@ const Gallery = () => {
       6: 'bg-pink-100 text-pink-700'
     };
     return colors[count] || 'bg-gray-100 text-gray-700';
+  };
+
+  // Handle delete button click on card (prevent opening detail)
+  const handleCardDeleteClick = (e, photo) => {
+    e.stopPropagation(); // Prevent opening detail dialog
+    setDeleteConfirmId(photo.id);
+    setDeleteConfirmPhoto(photo);
+  };
+
+  // Handle view button click on card
+  const handleCardViewClick = (e, photo) => {
+    e.stopPropagation();
+    setSelectedPhoto(photo);
   };
 
   return (
@@ -196,8 +211,7 @@ const Gallery = () => {
             {filteredPhotos.map(photo => (
               <Card
                 key={photo.id}
-                className="overflow-hidden hover:shadow-xl transition-shadow duration-300 cursor-pointer group"
-                onClick={() => setSelectedPhoto(photo)}
+                className="overflow-hidden hover:shadow-xl transition-shadow duration-300 group relative"
               >
                 <div className="relative aspect-[3/4] bg-gray-100">
                   <img
@@ -208,7 +222,29 @@ const Gallery = () => {
                       e.target.src = 'https://via.placeholder.com/400x600?text=Image+Not+Found';
                     }}
                   />
-                  <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300" />
+
+                  {/* Hover Overlay with Action Buttons */}
+                  <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-40 transition-all duration-300 flex items-center justify-center gap-3 opacity-0 group-hover:opacity-100">
+                    <Button
+                      onClick={(e) => handleCardViewClick(e, photo)}
+                      size="sm"
+                      className="bg-blue-600 hover:bg-blue-700 text-white"
+                      title="Lihat Detail"
+                    >
+                      <Eye size={16} className="mr-1" />
+                      Lihat
+                    </Button>
+                    <Button
+                      onClick={(e) => handleCardDeleteClick(e, photo)}
+                      size="sm"
+                      variant="destructive"
+                      className="bg-red-600 hover:bg-red-700"
+                      title="Hapus Foto"
+                    >
+                      <Trash2 size={16} className="mr-1" />
+                      Hapus
+                    </Button>
+                  </div>
 
                   {/* Layout Badge */}
                   <div className={`absolute top-2 right-2 px-2 py-1 rounded-full text-xs font-semibold ${getLayoutBadge(photo.layout_count)}`}>
@@ -222,6 +258,7 @@ const Gallery = () => {
                     </div>
                   )}
                 </div>
+
                 <div className="p-4">
                   <h3 className="font-semibold text-gray-900 mb-1 truncate">{photo.title}</h3>
                   <p className="text-xs text-gray-500">
@@ -298,7 +335,10 @@ const Gallery = () => {
                   Download
                 </Button>
                 <Button
-                  onClick={() => setDeleteConfirmId(selectedPhoto.id)}
+                  onClick={() => {
+                    setDeleteConfirmId(selectedPhoto.id);
+                    setDeleteConfirmPhoto(selectedPhoto);
+                  }}
                   variant="destructive"
                   className="flex-1"
                 >
@@ -312,12 +352,21 @@ const Gallery = () => {
       </Dialog>
 
       {/* Delete Confirmation Dialog */}
-      <AlertDialog open={!!deleteConfirmId} onOpenChange={() => setDeleteConfirmId(null)}>
+      <AlertDialog open={!!deleteConfirmId} onOpenChange={() => {
+        setDeleteConfirmId(null);
+        setDeleteConfirmPhoto(null);
+      }}>
         <AlertDialogContent>
           <AlertDialogHeader>
             <AlertDialogTitle>Hapus Photo Strip?</AlertDialogTitle>
             <AlertDialogDescription>
-              Tindakan ini tidak dapat dibatalkan. Photo strip akan dihapus secara permanen dari server.
+              {deleteConfirmPhoto && (
+                <div className="space-y-2">
+                  <p>Apakah Anda yakin ingin menghapus:</p>
+                  <p className="font-semibold text-gray-900">"{deleteConfirmPhoto.title}"</p>
+                  <p className="text-sm">Tindakan ini tidak dapat dibatalkan. Photo strip akan dihapus secara permanen dari server.</p>
+                </div>
+              )}
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
@@ -326,7 +375,7 @@ const Gallery = () => {
               onClick={() => handleDelete(deleteConfirmId)}
               className="bg-red-600 hover:bg-red-700"
             >
-              Hapus
+              Ya, Hapus
             </AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>
